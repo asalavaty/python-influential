@@ -47,7 +47,7 @@ Mirana Ramialison and Peter D. Currie
 
 ## How to Install
 
-You can install the official [PyiP](http://pypi.python.org/pypi/influential/) of the
+You can install the official [PyPI](http://pypi.python.org/pypi/influential/) of the
 `influential` with the following code:
 
 ``` python
