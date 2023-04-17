@@ -29,7 +29,7 @@ setup(
     license='GPL-3',
     packages=find_packages(),
     url='http://pypi.python.org/pypi/influential/',
-    install_requires=["igraph", "pandas", "numpy", "random", "statistics", "copy", "statsmodels", "scipy", "plotnine", "tqdm", "scikit-learn", "functools"],
+    install_requires=["igraph", "pandas", "numpy", "statistics", "statsmodels", "scipy", "plotnine", "tqdm", "scikit-learn"],
     keywords='influential',
     classifiers= [
         "Development Status :: 3 - Alpha",
