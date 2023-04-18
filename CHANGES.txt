@@ -4,4 +4,4 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [0.0.1] - 2023-18-04
+## [0.0.2] - 2023-18-04
