@@ -57,14 +57,14 @@ pip install influential
 Or the development version from GitHub:
 
 ``` python
-pip install git+https://github.com/asalavaty/python-influential.git#egg=python-influential
+pip install git+https://github.com/asalavaty/python-influential.git#egg=influential
 ```
 
 **Note**: If you are using Python 3 you may need to use `pip3` instead of `pip`, as follows.
 
 ``` python
 pip3 install influential
-pip3 install git+https://github.com/asalavaty/python-influential.git#egg=python-influential
+pip3 install git+https://github.com/asalavaty/python-influential.git#egg=influential
 ```
 
 ## Shiny apps
