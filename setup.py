@@ -24,6 +24,7 @@ setup(
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
     author="Adrian Salavaty",
     author_email="abbas.salavaty@gmail.com",
     license='GPL-3',
