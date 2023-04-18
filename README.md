@@ -2,6 +2,8 @@
 
 <!-- badges: start -->
 
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/influential)](https://pypi.python.org/pypi/influential)
+[![PyPI wheels](https://img.shields.io/pypi/wheel/influential.svg)](https://pypi.python.org/pypi/influential)
 [![](https://img.shields.io/badge/Integrated%20Value%20of%20Influence-IVI-blue.svg)](https://doi.org/10.1016/j.patter.2020.100052)
 [![](https://img.shields.io/badge/SIR--based%20Influence%20Ranking-SIRIR-green.svg)](https://doi.org/10.1016/j.patter.2020.100052)
 [![](https://img.shields.io/badge/Experimental%20data--based%20Integrative%20Ranking-ExIR-blue.svg)](https://www.biorxiv.org/content/10.1101/2022.10.03.510585v1.abstract)
