@@ -7,6 +7,8 @@ import igraph
 from random import seed
 from plotnine import ggplot, aes, geoms, arrow, scale_color_cmap, scale_color_cmap_d, scale_color_manual, scale_fill_gradient, scale_size_identity, scale_x_continuous, scale_y_continuous, ggtitle, labs, guides, guide_legend, facet_wrap, scale_size_continuous, themes
 from plotnine.utils import to_inches
+from .ranNorm import rangeNormalize
+from .rank import rank_cal
 from functools import reduce
 from copy import copy
 

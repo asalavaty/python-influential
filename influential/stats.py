@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import t
 from statsmodels.stats.multitest import multipletests
+from .rank import rank_cal
 
 # =============================================================================
 #

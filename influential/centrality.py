@@ -3,8 +3,11 @@
 # Import the requirements
 import pandas as pd
 import igraph
+from .ranNorm import rangeNormalize
+from .sir import simulate_sir
 from random import seed
 from statistics import mean
+from .rank import rank_cal
 from copy import copy
 
 # =============================================================================
