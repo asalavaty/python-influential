@@ -3,22 +3,21 @@
 image:
   - Visual Studio 2019
 
+version: '{build}'
+
 environment:
   matrix:
-  # - TOXENV: py27  # https://devguide.python.org/devcycle/#end-of-life-branches
-  # - TOXENV: py35
-  - TOXENV: py36    # https://devguide.python.org/#status-of-python-branches
-  - TOXENV: py37
-  - TOXENV: py38
-  - TOXENV: py39
-  - TOXENV: py310
-
-build: false
+    - PYTHON: "C:\\Python38-x64"
+    - PYTHON: "C:\\Python37-x64"
+    - PYTHON: "C:\\Python36-x64"
 
 install:
-  # - py --list
-  # - py -m pip install --upgrade pip
-  - py -m pip install tox
+  - ps: Install-Product Python $env:PYTHON
+  - set PATH=C:\Python%PYTHON:~0,1%%PYTHON:~-3%;%PATH%
+  - pip install -r requirements.txt
+
+build_script:
+  - python setup.py build
 
 test_script:
-  - py -m tox
+  - python setup.py test
