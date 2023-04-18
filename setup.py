@@ -33,9 +33,9 @@ setup(
     install_requires=["igraph", "pandas", "numpy", "statistics", "statsmodels", "scipy", "plotnine", "tqdm", "scikit-learn"],
     keywords='influential',
     classifiers= [
-        "Development Status :: 3 - Alpha",
-        "Intended Audience :: Network Scientists,  Bioinformaticians, Systems Biologists, and Developers",
-        'License :: OSI Approved :: GPL-3 License',
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Science/Research",
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         "Programming Language :: Python :: 3",
     ]
 )
