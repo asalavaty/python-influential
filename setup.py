@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 DESCRIPTION = 'Identification and Classification of the Most Influential Nodes'
 LONG_DESCRIPTION = """
 
