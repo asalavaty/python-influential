@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.0.21] - 2023-07-22
+
+### Modified
+
+- centrality: `copy` function is substituted with `deepcopy`
+- exir: `copy` function is substituted with `deepcopy`
+- visualize: `copy` function is substituted with `deepcopy`
+
 ## [0.0.2] - 2023-05-20
 
 ### Changed
