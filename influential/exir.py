@@ -3,7 +3,7 @@
 # Import the requirements
 import pandas as pd
 import numpy as np
-from copy import copy
+from copy import deepcopy
 from tqdm import trange
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.decomposition import PCA
@@ -189,8 +189,8 @@ def exir_model(Diff_data, Diff_value, Sig_value,
       pbar.set_description("Preparing the input data")
 
       ## Make a copy of the data so that the original input data is not changed
-      Exptl_data = copy(Exptl_data)
-      Diff_data = copy(Diff_data)
+      Exptl_data = deepcopy(Exptl_data)
+      Diff_data = deepcopy(Diff_data)
 
     # Change the colnames of Diff_data
     Diff_data.columns = list(map(lambda x: x + '_source', list(Diff_data.columns)))
@@ -372,7 +372,7 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     temp_corr = fcor(data = Exptl_data[condition_less_columns], method = "spearman", mutualRank = mutualRank_mode)
 
     ## Save a second copy of all cor data
-    temp_corr_for_sec_round = copy(temp_corr)
+    temp_corr_for_sec_round = deepcopy(temp_corr)
 
     ###################################################
 
@@ -411,8 +411,8 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     temp_corr = temp_corr.iloc[filter_corr_index]
 
     ## Filtering low level correlations
-    cor_thresh = copy(r)
-    mr_thresh = copy(mr)
+    cor_thresh = deepcopy(r)
+    mr_thresh = deepcopy(mr)
 
     if cor_thresh_method == "mr":
         temp_corr = temp_corr[temp_corr['mr'] < mr_thresh]
@@ -427,7 +427,7 @@ def exir_model(Diff_data, Diff_value, Sig_value,
             temp_corr_select_index = list(np.argsort(temp_corr.cor)[-round(max_connections*0.95):])
             temp_corr = temp_corr.iloc[temp_corr_select_index]
 
-    diff_only_temp_corr = copy(temp_corr)
+    diff_only_temp_corr = deepcopy(temp_corr)
 
     # Getting the list of diff features and their correlated features
     diff_plus_corr_features = list(temp_corr.row) + list(temp_corr.column)
@@ -443,7 +443,7 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     if len(non_diff_only_features) > 0:
 
         ## Redo correlation analysis
-        temp_corr = copy(temp_corr_for_sec_round)
+        temp_corr = deepcopy(temp_corr_for_sec_round)
         del temp_corr_for_sec_round
 
         ## Filter corr data for only those corr between non_diff_only_features and themselves/others
@@ -453,8 +453,8 @@ def exir_model(Diff_data, Diff_value, Sig_value,
         temp_corr = temp_corr.iloc[filter_corr_index]
 
         ## Filtering low level correlations
-        cor_thresh = copy(r)
-        mr_thresh = copy(mr)
+        cor_thresh = deepcopy(r)
+        mr_thresh = deepcopy(mr)
 
         if cor_thresh_method == "mr":
             temp_corr = temp_corr[temp_corr['mr'] < mr_thresh]
@@ -480,7 +480,7 @@ def exir_model(Diff_data, Diff_value, Sig_value,
         temp_corr = pd.concat([temp_corr, diff_only_temp_corr], axis=0)
 
     else:
-        temp_corr = copy(diff_only_temp_corr)
+        temp_corr = deepcopy(diff_only_temp_corr)
         del diff_only_temp_corr
 
     if verbose:
@@ -567,7 +567,7 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     Diff_data.final_Driver_score[Diff_data.final_Driver_score==0] = np.nan
 
     # Create the Drivers table
-    Driver_table = copy(Diff_data)
+    Driver_table = deepcopy(Diff_data)
 
     ## Remove the rows/features with NA in the final driver score
     Driver_table = Driver_table[Driver_table.final_Driver_score != np.nan]
@@ -631,7 +631,7 @@ def exir_model(Diff_data, Diff_value, Sig_value,
 
     # Create the Biomarker table
 
-    Biomarker_table = copy(Diff_data)
+    Biomarker_table = deepcopy(Diff_data)
 
     ## Remove the rows/features with NA in the final driver score
     Biomarker_table = Biomarker_table[Biomarker_table.final_Driver_score != np.nan]
@@ -723,7 +723,7 @@ def exir_model(Diff_data, Diff_value, Sig_value,
 
     # Create the DE mediators table
 
-    DE_mediator_table = copy(Diff_data)
+    DE_mediator_table = deepcopy(Diff_data)
 
     ## Include only rows/features with NaN in the final driver score (which are mediators)
     DE_mediator_table_index = list(i for i, x in enumerate(list(np.isnan(DE_mediator_table.final_Driver_score))) if x)

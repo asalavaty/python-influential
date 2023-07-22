@@ -10,7 +10,7 @@ from plotnine.utils import to_inches
 from .ranNorm import rangeNormalize
 from .rank import rank_cal
 from functools import reduce
-from copy import copy
+from copy import deepcopy
 
 # =============================================================================
 #
@@ -708,7 +708,7 @@ def exir_vis(exir_results,
 
     ## correct the features names
     if synonyms_table is not None:
-        synonyms_table = copy(synonyms_table)
+        synonyms_table = deepcopy(synonyms_table)
         synonyms_table.index = list(synonyms_table.iloc[:,0])
         synonyms_index = list(which(subject = list(exir_for_plot.Feature), source = list(synonyms_table.index), operator= 'in').values())
         exir_for_plot.Feature.iloc[list(which(subject = list(exir_for_plot.Feature), source = synonyms_index, operator= 'in').keys())] = list(synonyms_table.loc[synonyms_index, synonyms_table.columns[1]])

@@ -8,7 +8,7 @@ from .sir import simulate_sir
 from random import seed
 from statistics import mean
 from .rank import rank_cal
-from copy import copy
+from copy import deepcopy
 
 # =============================================================================
 #
@@ -1075,7 +1075,7 @@ def sirir(graph, vertices = None, beta = 0.5, gamma = 0.1, no_sim = None,  model
 
     # Model the spread based on leave one out cross ranking (LOOCR)
     for s in range(len(node_names)):
-        temp_graph = copy(graph)
+        temp_graph = deepcopy(graph)
         temp_graph.delete_vertices(node_names[s])
         seed(model_seed)
 
