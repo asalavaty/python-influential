@@ -1,4 +1,4 @@
-# influential <a href='https://github.com/asalavaty/python-influential'><img src='https://raw.githubusercontent.com/asalavaty/influential/master/man/figures/Symbol.png' align="right" height="221" /></a>
+# influential <a href='https://github.com/asalavaty/python-influential'><img src='https://raw.githubusercontent.com/asalavaty/python-influential/main/influential python package logo.png' align="right" height="221" /></a>
 
 <!-- badges: start -->
 
