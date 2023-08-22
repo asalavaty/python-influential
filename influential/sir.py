@@ -25,18 +25,18 @@ def simulate_sir(graph, beta, gamma, no_sim = 100):
     In this function, the initially infected individual is randomly selected from 
     all network vertices in each simulation round.
 
-    :param graph: The graph to be evaluated.
+    graph: The graph to be evaluated.
     :type graph: A graph (network) of the igraph class (igraph.Graph).
 
-    :param beta: The rate of infection of an individual that is susceptible and has a single infected neighbor (should be a positive scalar/float between 0 and 1). 
+    beta: The rate of infection of an individual that is susceptible and has a single infected neighbor (should be a positive scalar/float between 0 and 1). 
     The infection rate of a susceptible individual with n infected neighbors is n times beta. Formally this is the rate parameter of an exponential distribution.
     :type beta: float
 
-    :param gamma: The rate of recovery of an infected individual (should be a positive scalar/float between 0 and 1). 
+    gamma: The rate of recovery of an infected individual (should be a positive scalar/float between 0 and 1). 
     Formally this is the rate parameter of an exponential distribution.
     :type gamma: float
 
-    :param no_sim: The number simulation runs to perform.
+    no_sim: The number simulation runs to perform.
     :type no_sim: int
 
     :return: A list of discotionaries with a length equal to the number of simulations (no_sim). Each dictionary 

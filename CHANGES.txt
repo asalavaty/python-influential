@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.0.22] - 2023-08-20
+
+### Modified
+
+- centrality: The argument ‘scaled’ of the functions ivi, spreading.score, and hubness_score is changed to ‘scale’ and its functionality is optimized. Also, the performance and documentations of these functions are updated accordingly.
+- exir: The function exir is optimized. This function now calculates zscores from the raw data rather than range normalized data.
+- visualize: `copy` function is substituted with `deepcopy`
+
 ## [0.0.21] - 2023-07-22
 
 ### Modified

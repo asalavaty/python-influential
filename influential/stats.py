@@ -22,28 +22,28 @@ def fcor(data, use = "everything", method = "spearman", mutualRank = True, mutua
     rather than based on their correlation coefficients or an arbitrary p-value is more efficient and accurate in inferring
     functional associations in systems, for example in gene regulatory networks.
 
-    :param data: A numeric Pandas dataframe (features on columns and samples on rows).
+    data: A numeric Pandas dataframe (features on columns and samples on rows).
     :type data: pandas.core.frame.DataFrame
 
-    :param method: a character string indicating which correlation coefficient is to be computed. One of "pearson", "spearman" (default), or "kendall".
+    method: a character string indicating which correlation coefficient is to be computed. One of "pearson", "spearman" (default), or "kendall".
     :type method: str
 
-    :param mutualRank: logical, whether to calculate mutual ranks of correlations or not.
+    mutualRank: logical, whether to calculate mutual ranks of correlations or not.
     :type mutualRank: bool
 
-    :param mutualRank_mode: a character string indicating whether to rank based on "signed" or "unsigned" (default) correlation values. 
+    mutualRank_mode: a character string indicating whether to rank based on "signed" or "unsigned" (default) correlation values. 
     In the "unsigned" mode, only the level of a correlation value is important and not its sign (the function ranks the absolutes of correlations). 
     Options are "unsigned", and "signed".
     :type mutualRank_mode: str
 
-    :param pvalue: logical, whether to calculate p-values of correlations or not.
+    pvalue: logical, whether to calculate p-values of correlations or not.
     :type pvalue: bool
 
-    :param adjust: p-value correction method (when pvalue = True), a character string including any of "fdr_bh" (Benjamini/Hochberg; default),
+    adjust: p-value correction method (when pvalue = True), a character string including any of "fdr_bh" (Benjamini/Hochberg; default),
     "bonferroni", "sidak", "holm", "holm-sidak", "hochberg", "simes-hochberg", "hommel", "fdr_by" (Benjamini/Yekutieli), "fdr_tsbh", "fdr_tsbky", or "none".
     :type adjust: str
 
-    :param flat: logical, whether to combine and flatten the result matrices or not.
+    flat: logical, whether to combine and flatten the result matrices or not.
     :type flat: bool
 
     :return: Depending on the input data, a Pandas dataframe or a dictionary including cor (correlation coefficients),

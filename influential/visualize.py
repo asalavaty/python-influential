@@ -63,10 +63,10 @@ def cent_network_vis(
     visualization, which is accessible using the `influential::runShinyApp("IVI")` command.
     You can also access the shiny app online at https://influential.erc.monash.edu/.
 
-    :param graph: the graph to be evaluated.
+    graph: the graph to be evaluated.
     :type graph: a graph (network) of the igraph class (igraph.Graph).
 
-    :param cent_metric: A numeric list/array of the desired centrality measure previously
+    cent_metric: A numeric list/array of the desired centrality measure previously
     calculated by any means. For example, you may use the function 'influential.centrality.ivi' for the calculation of 
     the Integrated Value of Influence (IVI) of network nodes. Please note that
     if the centrality measure has been calculated by any means other than the influential package, make
@@ -74,119 +74,119 @@ def cent_network_vis(
     in the network (you can get the graph vertices uisng the command 'graph.vs').
     :type cent_metric: list
 
-    :param layout: The layout to be used for organizing network nodes. Current available layouts include
+    layout: The layout to be used for organizing network nodes. Current available layouts include
     "auto", "bipartite", "circle", "dh", "drl", "drl_3d", "fr", "fr_3d", "grid", "grid_3d", "graphopt", "kk",
     "kk_3d", "lgl", "gem", "mds", "lgl", "mds", "random", "random_3d", "rt", "rt_circular", "sphere", 
     "star" and "sugiyama" (default is set to "kk"). For a complete description of different layouts and their
     underlying algorithms please refer to the module igraph.layout.
     :type layout: str
 
-    :param node_color: a standard Matplotlib colormap name. The default is `viridis`. For the list of names checkout the 
+    node_color: a standard Matplotlib colormap name. The default is `viridis`. For the list of names checkout the 
     output of ``matplotlib.cm.cmaps_listed.keys()`` or see the `documentation <http://matplotlib.org/users/colormaps.html>`_.
     :type node_color: str
 
-    :param node_size_min: the size of nodes with the lowest value of the centrality measure (default is set to 3).
+    node_size_min: the size of nodes with the lowest value of the centrality measure (default is set to 3).
     :type node_size_min: int
 
-    :param node_size_max: the size of nodes with the highest value of the centrality measure (default is set to 15).
+    node_size_max: the size of nodes with the highest value of the centrality measure (default is set to 15).
     :type node_size_max: int
 
-    :param dist_power: the power to be used to visualize more distinction between nodes with high and low
+    dist_power: the power to be used to visualize more distinction between nodes with high and low
     centrality measure values. The higher the power, the smaller the nodes with lower values of the centrality
     measure will become. Default is set to 1, meaning the relative sizes of nodes are reflective of their
     actual centrality measure values.
     :type dist_power: float
 
-    :param node_shape: the shape of nodes. Current available shapes include "circle",
+    node_shape: the shape of nodes. Current available shapes include "circle",
     "square", "diamond", "triangle", and "inverted triangle" (default is set to "circle"). You can also
     set different shapes to different groups of nodes by providing a list of shapes of nodes with
     the same length and order of network nodes. This is useful when plotting a network that include different
     types of nodes (for example, up- and down-regulated features).
     :type node_shape: str or list
 
-    :param stroke_size: the size of stroke (border) around the nodes (default is set to 1.5).
+    stroke_size: the size of stroke (border) around the nodes (default is set to 1.5).
     :type stroke_size: float
 
-    :param stroke_color: the color of stroke (border) around the nodes (default is set to "identical" meaning that the
+    stroke_color: the color of stroke (border) around the nodes (default is set to "identical" meaning that the
     stroke color of a node will be identical to its corresponding node color). You can also
     set different colors to different groups of nodes by providing a character vector of colors of nodes with
     the same length and order of network nodes. This is useful when plotting a network that include different
     type of node (for example, up- and down-regulated features).
     :type stroke_color: str or list
 
-    :param stroke_alpha: the transparency of the stroke (border) around the nodes which should
+    stroke_alpha: the transparency of the stroke (border) around the nodes which should
     be a number between 0 and 1 (default is set to 0.6).
     :type stroke_alpha: float
 
-    :param show_labels: whether to show node labels or not (default is set to True).
+    show_labels: whether to show node labels or not (default is set to True).
     :type show_labels: bool
 
-    :param label_cex: the amount by which node labels should be scaled relative to the node sizes (default is set to 0.4).
+    label_cex: the amount by which node labels should be scaled relative to the node sizes (default is set to 0.4).
     :type label_cex: float
 
-    :param label_color: the color of node labels (default is set to "black").
+    label_color: the color of node labels (default is set to "black").
     :type label_color: str
 
-    :param directed: whether to draw the network as directed or not (default is set to False).
+    directed: whether to draw the network as directed or not (default is set to False).
     :type directed: bool
 
-    :param arrow_width: the width of arrows in the case the network is directed (default is set to 25).
+    arrow_width: the width of arrows in the case the network is directed (default is set to 25).
     :type arrow_width: float
 
-    :param arrow_length: the length of arrows in inch in the case the network is directed (default is set to 0.07).
+    arrow_length: the length of arrows in inch in the case the network is directed (default is set to 0.07).
     :type arrow_length: float
 
-    :param edge_width: the constant width of edges if the network is unweighted (default is set to 0.5).
+    edge_width: the constant width of edges if the network is unweighted (default is set to 0.5).
     :type edge_width: float
 
-    :param weighted: whether the network is a weighted network or not (default is set to False).
+    weighted: whether the network is a weighted network or not (default is set to False).
     :type weighted: bool
     
-    :param edge_width_min: the width of edges with the lowest weight (default is set to 0.2).
+    edge_width_min: the width of edges with the lowest weight (default is set to 0.2).
     This parameter is ignored for unweighted networks.
     :type edge_width_min: float
     
-    :param edge_width_max: the width of edges with the highest weight (default is set to 1).
+    edge_width_max: the width of edges with the highest weight (default is set to 1).
     This parameter is ignored for unweighted networks.
     :type edge_width_min: float
 
-    :param edge_color: the color of edges (default is set to "lightgrey").
+    edge_color: the color of edges (default is set to "lightgrey").
     :type edge_color: str
 
-    :param edge_linetype: the line type of edges. Current available linetypes include
+    edge_linetype: the line type of edges. Current available linetypes include
     "twodash", "longdash", "dotdash", "dotted", "dashed", and "solid" (default is set to "solid").
     :type edge_linetype: str
 
-    :param legend_position: The position of legends ("none", "left", "right",
+    legend_position: The position of legends ("none", "left", "right",
     "bottom", "top", or two-element numeric vector). The default is set to "right".
     :type legend_position: str
 
-    :param legend_direction: layout of items in legends ("horizontal" or "vertical").
+    legend_direction: layout of items in legends ("horizontal" or "vertical").
     The default is set to "vertical".
     :type legend_direction: str
 
-    :param legend_title: the legend title in the string format (default is set to "Centrality measure").
+    legend_title: the legend title in the string format (default is set to "Centrality measure").
     :type legend_title: str
 
-    :param boxed_legend: whether to draw a box around the legend or not (default is set to TRUE).
+    boxed_legend: whether to draw a box around the legend or not (default is set to TRUE).
     :type boxed_legend: bool
 
-    :param show_plot_title: whether to show the plot title or not (default is set to True).
+    show_plot_title: whether to show the plot title or not (default is set to True).
     :type show_plot_title: bool
 
-    :param plot_title: the plot title in the string format (default is set to "Centrality Measure-based Network").
+    plot_title: the plot title in the string format (default is set to "Centrality Measure-based Network").
     :type plot_title: str
 
-    :param title_position: the position of title ("left", "center", or "right"). The default is set to "center".
+    title_position: the position of title ("left", "center", or "right"). The default is set to "center".
     :type title_position: str
 
-    :param show_bottom_border: whether to draw the bottom border line (default is set to True).
+    show_bottom_border: whether to draw the bottom border line (default is set to True).
     :type show_bottom_border: bool
 
-    :param show_left_border: whether to draw the left border line (default is set to True).
+    show_left_border: whether to draw the left border line (default is set to True).
     :type show_left_border: bool
 
-    :param vis_seed: a single value, interpreted as an integer to be used for random number generation for preparing
+    vis_seed: a single value, interpreted as an integer to be used for random number generation for preparing
     the network layout (default is set to 1234).
     :type vis_seed: int
 
@@ -429,103 +429,103 @@ def exir_vis(exir_results,
     A shiny app has also been developed for Running the ExIR model, visualization of its results as well as computational
     simulation of knockout and/or up-regulation of its top candidate outputs, which is accessible online at https://influential.erc.monash.edu/.
 
-    :param exir_results: output of the function `exir`.
+    exir_results: output of the function `exir`.
     :type exir_results: dict
 
-    :param synonyms_table: (optional) a pandas data frame with two columns including a column for the used feature
+    synonyms_table: (optional) a pandas data frame with two columns including a column for the used feature
     names in the input data of the "exir" model and the other column their synonyms. Note, the original feature names should
     always come on the first column and the synonyms on the second one. For example, if
     the original feature names used for running the "exir" model are Ensembl gene
     symbols, you can use their HGNC synonyms in the second column to be used for the visualization of the ExIR results.
     :type synonyms_table: pandas.core.frame.DataFrame
 
-    :param n: an integer specifying the number of top candidates to be selected from each category of ExIR results (default is set to 10).
+    n: an integer specifying the number of top candidates to be selected from each category of ExIR results (default is set to 10).
     :type n: int
 
-    :param driver_type: a string specifying the type of drivers to be used for the selection of top N candidates. The possible types
+    driver_type: a string specifying the type of drivers to be used for the selection of top N candidates. The possible types
     include "combined" (meaning both driver types), "accelerator" and "decelerator" (default is set to "combined").
     :type driver_type: str
 
-    :param biomarker_type: A string specifying the type of biomarkers to be used for the selection of top N candidates. Possible types
+    biomarker_type: A string specifying the type of biomarkers to be used for the selection of top N candidates. Possible types
     include "combined" (meaning both biomarker types), "up-regulated" and "down-regulated" (default is set to "combined").
     :type biomarker_type: str
 
-    :param show_drivers: whether to show Drivers or not (default is set to True).
+    show_drivers: whether to show Drivers or not (default is set to True).
     :type show_drivers: bool
 
-    :param show_biomarkers: whether to show Biomarkers or not (default is set to True).
+    show_biomarkers: whether to show Biomarkers or not (default is set to True).
     :type show_biomarkers: bool
 
-    :param show_de_mediators: whether to show DE-mediators or not (default is set to True).
+    show_de_mediators: whether to show DE-mediators or not (default is set to True).
     :type show_de_mediators: bool
 
-    :param show_nonDE_mediators: whether to show nonDE-mediators or not (default is set to True).
+    show_nonDE_mediators: whether to show nonDE-mediators or not (default is set to True).
     :type show_nonDE_mediators: bool
 
-    :param basis: a string specifying the basis for the selection of top N candidates from each category of the results. Possible options include
+    basis: a string specifying the basis for the selection of top N candidates from each category of the results. Possible options include
     "Rank" and "Adjusted p-value" (default is set to "Rank").
     :type basis: str
 
-    :param nrow: number of rows of the plot (default is set to 1).
+    nrow: number of rows of the plot (default is set to 1).
     :type nrow: int
 
-    :param dot_size_min: the size of dots with the lowest statistical significance (default is set to 1).
+    dot_size_min: the size of dots with the lowest statistical significance (default is set to 1).
     :type dot_size_min: foat
 
-    :param dot_size_max: the size of dots with the highest statistical significance (default is set to 3).
+    dot_size_max: the size of dots with the highest statistical significance (default is set to 3).
     :type dot_size_max: foat
 
-    :param type_color: a string indicating the color palette to be used for the visualization of
+    type_color: a string indicating the color palette to be used for the visualization of
     different types of candidates. You may choose one of the Viridis palettes including 'magma', 'inferno', 'plasma', 
     'viridis', 'cividis', 'twilight', 'twilight_shifted', 'turbo', or manually specify the vector of colors for different types.
     :type type_color: str or list
 
-    :param stroke_size: the size of stroke (border) around the dots (default is set to 1.5).
+    stroke_size: the size of stroke (border) around the dots (default is set to 1.5).
     :type stroke_size: foat
 
-    :param stroke_alpha: the transparency of the stroke (border) around the dots which should
+    stroke_alpha: the transparency of the stroke (border) around the dots which should
     be a number between 0 and 1 (default is set to 1).
     :type stroke_alpha: foat
 
-    :param dot_color_low: the color to be used for the visualization of dots (features) with the lowest Z-score values (default is set to "blue").
+    dot_color_low: the color to be used for the visualization of dots (features) with the lowest Z-score values (default is set to "blue").
     :type dot_color_low: str
 
-    :param dot_color_high: The color to be used for the visualization of dots (features) with the highest Z-score values (default is set to "red").
+    dot_color_high: The color to be used for the visualization of dots (features) with the highest Z-score values (default is set to "red").
     :type dot_color_high: str
 
-    :param legend_position: the position of legends ("none", "left", "right",
+    legend_position: the position of legends ("none", "left", "right",
     "bottom", "top"). The default is set to "bottom".
     :type legend_position: str
 
-    :param legend_direction: layout of items in legends ("horizontal" or "vertical").
+    legend_direction: layout of items in legends ("horizontal" or "vertical").
     The default is set to "vertical".
     :type legend_direction: str
     
-    :param boxed_legend: whether to draw a box around the legend or not (default is set to True).
+    boxed_legend: whether to draw a box around the legend or not (default is set to True).
     :type boxed_legend: bool
 
-    :param show_plot_title: whether to show the plot title or not (default is set to True).
+    show_plot_title: whether to show the plot title or not (default is set to True).
     :type show_plot_title: bool
 
-    :param plot_title: the plot title in the string format (default is set to "auto" which automatically generates a title for the plot).
+    plot_title: the plot title in the string format (default is set to "auto" which automatically generates a title for the plot).
     :type plot_title: str
 
-    :param title_position: the position of title and subtitle ("left", "center", or "right"). The default is set to "left".
+    title_position: the position of title and subtitle ("left", "center", or "right"). The default is set to "left".
     :type title_position: str
 
-    :param plot_title_size: the font size of the plot title (default is set to 12).
+    plot_title_size: the font size of the plot title (default is set to 12).
     :type plot_title_size: float
 
-    :param show_plot_subtitle: whether to show the plot subtitle or not (default is set to True).
+    show_plot_subtitle: whether to show the plot subtitle or not (default is set to True).
     :type show_plot_subtitle: bool
 
-    :param plot_subtitle: the plot subtitle in the string format (default is set to "auto" which automatically generates a subtitle for the plot).
+    plot_subtitle: the plot subtitle in the string format (default is set to "auto" which automatically generates a subtitle for the plot).
     :type plot_subtitle: str
 
-    :param y_axis_title: the title of the y axis (features title). Default is set to "Features".
+    y_axis_title: the title of the y axis (features title). Default is set to "Features".
     :type y_axis_title: str
 
-    :param show_y_axis_grid: whether to draw y axis grid lines (default is set to True).
+    show_y_axis_grid: whether to draw y axis grid lines (default is set to True).
     :type show_y_axis_grid: bool
 
     :return: a plot with the class `plotnine.ggplot.ggplot`.

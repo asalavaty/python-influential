@@ -30,7 +30,7 @@ def diff_data_assembly(*dataframes):
     and the second one (if provided) the significance values. Please also note that the significance (adjusted P-value)
     column is mandatory for differential datasets.
 
-    :param dataframes: desired pandas dataframes containing differential/regression data.
+    dataframes: desired pandas dataframes containing differential/regression data.
     :type dataframes: pandas.core.frame.DataFrame
 
     :return: a Pandas dataframe including the collective list of features in rows and all of the
@@ -90,12 +90,12 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     A shiny app has also been developed for Running the ExIR model, visualization of its results as well as computational
     simulation of knockout and/or up-regulation of its top candidate outputs, which is accessible online at https://influential.erc.monash.edu/.
 
-    :param Desired_list: (optional) A string list of your desired features. This list could be, for
+    Desired_list: (optional) A string list of your desired features. This list could be, for
     instance, a list of features obtained from cluster analysis, time-course analysis,
     or a list of dysregulated features with a specific sign.
     :type Desired_list: list
 
-    :param Diff_data: a pandas dataframe of all significant differential/regression data and their
+    Diff_data: a pandas dataframe of all significant differential/regression data and their
     statistical significance values (p-value/adjusted p-value). Note that the differential data
     should be in the log fold-change (log2FC) format.
     You may have selected a proportion of the differential data as the significant ones according
@@ -103,22 +103,22 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     provided for the convenient assembling of the Diff_data dataframe.
     :type Diff_data: pandas.core.frame.DataFrame
 
-    :param Diff_value: an integer list containing the column number(s) of the differential
+    Diff_value: an integer list containing the column number(s) of the differential
     data in the Diff_data dataframe. The differential data could result from any type of
     differential data analysis. One example could be the fold changes (FCs) obtained from differential
     expression analyses. The user may provide as many differential data as he/she wish.
     :type Diff_value: list
 
-    :param Regr_value: (optional) an integer list containing the column number(s) of the regression
+    Regr_value: (optional) an integer list containing the column number(s) of the regression
     data in the Diff_data dataframe. The regression data could result from any type of regression
     data analysis or other analyses such as time-course data analyses that are based on regression models.
     :type Regr_value: list
 
-    :param Sig_value: an integer list containing the column number(s) of the significance values (p-value/adjusted p-value) of
+    Sig_value: an integer list containing the column number(s) of the significance values (p-value/adjusted p-value) of
     both differential and regression data (if provided). Providing significance values for the regression data is optional.
     :type Sig_value: list
 
-    :param Exptl_data: a pandas dataframe containing all of the experimental data including a column for specifying the conditions.
+    Exptl_data: a pandas dataframe containing all of the experimental data including a column for specifying the conditions.
     The features/variables of the dataframe should be on the columns and the samples should come on the rows.
     The condition column should be of the string class. For example, if the study includes several replicates of
     cancer and normal samples, the condition column should include "cancer" and "normal" as the conditions of different samples.
@@ -127,38 +127,38 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     The experimental data could come from a variety sources such as transcriptomics and proteomics assays.
     :type Exptl_data: pandas.core.frame.DataFrame
     
-    :param Condition_colname: a string or character vector specifying the name of the column "condition" of the Exptl_data dataframe.
+    Condition_colname: a string or character vector specifying the name of the column "condition" of the Exptl_data dataframe.
     type Condition_colname: str
 
-    :param Normalize: whether the experimental data should be normalized or not (default is False). If True, the
+    Normalize: whether the experimental data should be normalized or not (default is False). If True, the
     experimental data will be log2 transformed.
     :type Normalize: bool
 
-    :param cor_thresh_method: a character string indicating the method for filtering the correlation results, either
+    cor_thresh_method: a character string indicating the method for filtering the correlation results, either
     "mr" (default; Mutual Rank) or "cor.coefficient".
     :type cor_thresh_method: str
 
-    :param mr: an integer determining the threshold of mutual rank for the selection of correlated features (default is 20). Note that
+    mr: an integer determining the threshold of mutual rank for the selection of correlated features (default is 20). Note that
     higher mr values considerably increase the computation time.
     :type mr: int
 
-    :param r: the threshold of Spearman correlation coefficient for the selection of correlated features (default is 0.5).
+    r: the threshold of Spearman correlation coefficient for the selection of correlated features (default is 0.5).
     :type r: float
     
-    :param max_connections: the maximum number of connections to be included in the association network.
+    max_connections: the maximum number of connections to be included in the association network.
     Higher max_connections might increase the computation time, cost, and accuracy of the results (default is 50,000).
     :type max_connections: int
 
-    :param alpha: the threshold of the statistical significance (p-value) used throughout the entire model (default is 0.05)
+    alpha: the threshold of the statistical significance (p-value) used throughout the entire model (default is 0.05)
     :type alpha: float
 
-    :param num_trees: number of trees to be used for the random forests classification (supervised machine learning). Default is set to 10000.
+    num_trees: number of trees to be used for the random forests classification (supervised machine learning). Default is set to 10000.
     :type num_trees: int
 
-    :param mtry: mumber of features to possibly split at in each node. Default ('sqrt') is the (rounded down) square root of the
+    mtry: mumber of features to possibly split at in each node. Default ('sqrt') is the (rounded down) square root of the
     number of variables. Possible options include "sqrt", "log2", int or float.
 
-    :param inf_const: The constant value to be multiplied by the maximum absolute value of differential (logFC)
+    inf_const: The constant value to be multiplied by the maximum absolute value of differential (logFC)
     values for the substitution with infinite differential values. This results in noticeably high biomarker values for features
     with infinite differential values compared with other features. Having said that, the user can still use the
     biomarker rank to compare all of the features. This parameter is ignored if no infinite value
@@ -167,10 +167,10 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     value is preserved (default is 10**10).
     :type inf_const: int
 
-    :param seed: the seed to be used for all of the random processes throughout the model (default is 1234).
+    seed: the seed to be used for all of the random processes throughout the model (default is 1234).
     :type seed: int
 
-    :param verbose: whether the accomplishment of different stages of the model should be printed (default is True).
+    verbose: whether the accomplishment of different stages of the model should be printed (default is True).
     :type verbose: bool
     
     :return: a dictionary of one graph and one to four pandas dataframes including:
@@ -580,14 +580,15 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     if pd.DataFrame(Driver_table).shape[0] == 0:
         Driver_table = None
     else:
+
+        #add Z.score
+        Driver_table['Z_score'] = ((Driver_table.final_Driver_score - np.mean(Driver_table.final_Driver_score)) / np.std(Driver_table.final_Driver_score))
+
         ### Range normalize final driver score
         if len(Driver_table.final_Driver_score.unique()) > 1:
             Driver_table.final_Driver_score = rangeNormalize(data = Driver_table.final_Driver_score, minimum = 1, maximum = 100)
         else:
             Driver_table.final_Driver_score = 1
-        
-        #add Z.score
-        Driver_table['Z_score'] = ((Driver_table.final_Driver_score - np.mean(Driver_table.final_Driver_score)) / np.std(Driver_table.final_Driver_score))
 
         #add driver rank
         Driver_table['rank'] = rank_cal(list(Driver_table.final_Driver_score), order = -1)
@@ -676,14 +677,15 @@ def exir_model(Diff_data, Diff_value, Sig_value,
         if pd.DataFrame(Biomarker_table).shape[0] == 0:
             Biomarker_table = None
         else:
+
+            #add Z.score
+            Biomarker_table['Z_score'] = ((Biomarker_table.final_biomarker_score - np.mean(Biomarker_table.final_biomarker_score)) / np.std(Biomarker_table.final_biomarker_score))
+
             ### Range normalize final biomarker score
             if len(Biomarker_table.final_biomarker_score.unique()) > 1:
                 Biomarker_table.final_biomarker_score = rangeNormalize(data = Biomarker_table.final_biomarker_score, minimum = 1, maximum = 100)
             else:
                 Biomarker_table.final_biomarker_score = 1
-
-        #add Z.score
-        Biomarker_table['Z_score'] = ((Biomarker_table.final_biomarker_score - np.mean(Biomarker_table.final_biomarker_score)) / np.std(Biomarker_table.final_biomarker_score))
 
         #add biomarker rank
         Biomarker_table['rank'] = rank_cal(list(Biomarker_table.final_biomarker_score), order = -1)
@@ -744,14 +746,15 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     if pd.DataFrame(DE_mediator_table).shape[0] == 0:
         DE_mediator_table = None
     else:
+
+        #add Z.score
+        DE_mediator_table['Z_score'] = ((DE_mediator_table.DE_mediator_score - np.mean(DE_mediator_table.DE_mediator_score)) / np.std(DE_mediator_table.DE_mediator_score))
+
         ### Range normalize DE mediators score
         if len(DE_mediator_table.DE_mediator_score.unique()) > 1:
             DE_mediator_table.DE_mediator_score = rangeNormalize(data = DE_mediator_table.DE_mediator_score, minimum = 1, maximum = 100)
         else:
             DE_mediator_table.DE_mediator_score = 1
-
-        #add Z.score
-        DE_mediator_table['Z_score'] = ((DE_mediator_table.DE_mediator_score - np.mean(DE_mediator_table.DE_mediator_score)) / np.std(DE_mediator_table.DE_mediator_score))
 
         #add biomarker rank
         DE_mediator_table['rank'] = rank_cal(list(DE_mediator_table.DE_mediator_score), order = -1)
@@ -804,14 +807,14 @@ def exir_model(Diff_data, Diff_value, Sig_value,
         
         non_DE_mediators_table['non_DE_mediator_score'] = non_DE_mediators_table.N_score * non_DE_mediators_table.ivi
 
+        #add Z.score
+        non_DE_mediators_table['Z_score'] = ((non_DE_mediators_table.non_DE_mediator_score - np.mean(non_DE_mediators_table.non_DE_mediator_score)) / np.std(non_DE_mediators_table.non_DE_mediator_score))
+
         ### Range normalize non-DE mediators score
         if len(non_DE_mediators_table.non_DE_mediator_score.unique()) > 1:
             non_DE_mediators_table.non_DE_mediator_score = rangeNormalize(data = non_DE_mediators_table.non_DE_mediator_score, minimum = 1, maximum = 100)
         else:
             non_DE_mediators_table.non_DE_mediator_score = 1
-
-        #add Z.score
-        non_DE_mediators_table['Z_score'] = ((non_DE_mediators_table.non_DE_mediator_score - np.mean(non_DE_mediators_table.non_DE_mediator_score)) / np.std(non_DE_mediators_table.non_DE_mediator_score))
 
         #add biomarker rank
         non_DE_mediators_table['rank'] = rank_cal(list(non_DE_mediators_table.non_DE_mediator_score), order = -1)

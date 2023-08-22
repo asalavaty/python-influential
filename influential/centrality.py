@@ -2,6 +2,7 @@
 
 # Import the requirements
 import pandas as pd
+import numpy as np
 import igraph
 from .ranNorm import rangeNormalize
 from .sir import simulate_sir
@@ -22,15 +23,15 @@ def neighborhood_connectivity(graph, vertices = None, mode = "all", verbose = Fa
     This function calculates the neighborhood connectivity of input
     vertices and works with both directed and undirected networks.
 
-    :param graph: the graph to be evaluated.
+    graph: the graph to be evaluated.
     :type graph: a graph (network) of the igraph class (igraph.Graph).
 
-    :param vertices: a list of desired vertices, which could be
+    vertices: a list of desired vertices, which could be
     obtained by the igraph.VertexSeq function. You may also provide a list of string names of vertices.
     All the vertices are considered by default (vertices = None).
     :type vertices: igraph Vertex class or string list
 
-    :param mode: the mode of neighborhood connectivity depending on the
+    mode: the mode of neighborhood connectivity depending on the
     directedness of the graph. If the graph is undirected, the mode "all"
     should be specified. Otherwise, for the calculation of neighborhood
     connectivity based on incoming connections select "in" and for
@@ -38,7 +39,7 @@ def neighborhood_connectivity(graph, vertices = None, mode = "all", verbose = Fa
     are desired, specify the "all" mode. Default mode is set to "all".
     :type mode: string
 
-    :param verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
+    verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
     :type verbose: bool
 
     :return: A Pandas DataFrame with three columns including Node_index, Node_name, and Neighborhood_connectivity
@@ -118,22 +119,22 @@ def h_index(graph, vertices = None, mode = "all", verbose = False):
     This function calculates the H-index of input vertices and
     works with both directed and undirected networks.
 
-    :param graph: The graph to be evaluated.
+    graph: The graph to be evaluated.
     :type graph: A graph (network) of the igraph class (igraph.Graph).
     
-    :param vertices: A list of desired vertices, which could be
+    vertices: A list of desired vertices, which could be
     obtained by the igraph.VertexSeq function. You may also provide a list of string names of vertices.
     All the vertices are considered by default (vertices = None).
     :type vertices: igraph Vertex class or string list
 
-    :param mode: The mode of H-index depending on the directedness of the graph.
+    mode: The mode of H-index depending on the directedness of the graph.
     If the graph is undirected, the mode "all" should be specified.
     Otherwise, for the calculation of H-index based on
     incoming connections select "in" and for the outgoing connections select "out".
     Also, if all of the connections are desired, specify the "all" mode. Default mode is set to "all".
     :type mode: string
 
-    :param verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
+    verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
     :type verbose: bool
     
     :return: A Pandas DataFrame with three columns including Node_index, Node_name, and H-index.
@@ -227,22 +228,22 @@ def lh_index(graph, vertices = None, mode = "all", verbose = False):
     This function calculates the local H-index of input vertices and
     works with both directed and undirected networks.
 
-    :param graph: The graph to be evaluated.
+    graph: The graph to be evaluated.
     :type graph: A graph (network) of the igraph class (igraph.Graph).
 
-    :param vertices: A list of desired vertices, which could be
+    vertices: A list of desired vertices, which could be
     obtained by the igraph.VertexSeq function. You may also provide a list of string names of vertices.
     All the vertices are considered by default (vertices = None).
     :type vertices: igraph Vertex class or string list
 
-    :param mode: The mode of local H-index depending on the directedness of the graph.
+    mode: The mode of local H-index depending on the directedness of the graph.
     If the graph is undirected, the mode "all" should be specified.
     Otherwise, for the calculation of local H-index based on
     incoming connections select "in" and for the outgoing connections select "out".
     Also, if all of the connections are desired, specify the "all" mode. Default mode is set to "all".
     :type mode: string
 
-    :param verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
+    verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
     :type verbose: bool
 
     :return: A Pandas DataFrame with three columns including Node_index, Node_name, and LH_index.
@@ -299,29 +300,29 @@ def collective_influence(graph, vertices =None, mode = "all", d=3, verbose = Fal
     it is the product of the reduced degree (degree - 1) of a node and the total reduced
     degree of all nodes at a distance d from the node.
 
-    :param graph: The graph to be evaluated.
+    graph: The graph to be evaluated.
     :type graph: A graph (network) of the igraph class (igraph.Graph).
 
-    :param vertices: A list of desired vertices, which could be
+    vertices: A list of desired vertices, which could be
     obtained by the igraph.VertexSeq function. You may also provide a list of string names of vertices.
     All the vertices are considered by default (vertices = None).
     :type vertices: igraph Vertex class or string list
 
-    :param mode: The mode of collective influence depending on the directedness of the graph.
+    mode: The mode of collective influence depending on the directedness of the graph.
     If the graph is undirected, the mode "all" should be specified.
     Otherwise, for the calculation of collective influence based on
     incoming connections select "in" and for the outgoing connections select "out".
     Also, if all of the connections are desired, specify the "all" mode. Default mode is set to "all".
     :type mode: string
 
-    :param d: The distance, expressed in number of steps from a given node (default=3). Distance
+    d: The distance, expressed in number of steps from a given node (default=3). Distance
     must be > 0. According to Morone & Makse (https://doi.org/10.1038/nature14604), optimal
     results can be reached at d=3,4, but this depends on the size/radius of the network.
     Note: the distance d is not inclusive. This means that nodes at a distance of 3 from
     our node-of-interest do not include nodes at distances 1 and 2. Only 3.
     :type d: int
 
-    :param verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
+    verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
     :type verbose: bool
 
     :return: A Pandas DataFrame with three columns including Node_index, Node_name, and Collective_influence.
@@ -401,21 +402,21 @@ def clusterRank(graph, vertices = None, directed = False, loops = True, verbose 
     some minor modifications. ClusterRank is a local ranking algorithm which takes into account not only
     the number of neighbors and the neighbors’ influences, but also their clustering coefficient.
 
-    :param graph: The graph to be evaluated.
+    graph: The graph to be evaluated.
     :type graph: A graph (network) of the igraph class (igraph.Graph).
 
-    :param vertices: A list of desired vertices, which could be
+    vertices: A list of desired vertices, which could be
     obtained by the igraph.VertexSeq function. You may also provide a list of string names of vertices.
     All the vertices are considered by default (vertices = None).
     :type vertices: igraph Vertex class or string list
 
-    :param directed: Whether a directed graph is analyzed. This argument is ignored for undirected graphs.
+    directed: Whether a directed graph is analyzed. This argument is ignored for undirected graphs.
     :type directed: bool
 
-    :param loops: Whether the loop edges are also counted.
+    loops: Whether the loop edges are also counted.
     type loops: bool
 
-    :param verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
+    verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
     :type verbose: bool
 
     :return: A Pandas DataFrame with three columns including Node_index, Node_name, and ClusterRank.
@@ -496,7 +497,7 @@ def clusterRank(graph, vertices = None, directed = False, loops = True, verbose 
 #
 #=============================================================================
 
-def ivi_from_indices(DC, CR, LH_index, NC, BC, CI, scaled = True, verbose = False):
+def ivi_from_indices(DC, CR, LH_index, NC, BC, CI, scale = 'range', verbose = False):
 
     """
     This function calculates the IVI of the desired nodes from previously calculated centrality
@@ -506,28 +507,32 @@ def ivi_from_indices(DC, CR, LH_index, NC, BC, CI, scaled = True, verbose = Fals
     A shiny app has also been developed for the calculation of IVI as well as IVI-based network
     visualization, which is accessible online at https://influential.erc.monash.edu/.
 
-    :param DC: A list containing the values of degree centrality of the desired vertices.
+    DC: A list containing the values of degree centrality of the desired vertices.
     :type DC: list
 
-    :param CR: A list containing the values of ClusterRank of the desired vertices.
+    CR: A list containing the values of ClusterRank of the desired vertices.
     :type CR: list
 
-    :param LH_index: A list containing the values of local H-index of the desired vertices.
+    LH_index: A list containing the values of local H-index of the desired vertices.
     :type LH_index: list
 
-    :param NC: A list containing the values of neighborhood connectivity of the desired vertices.
+    NC: A list containing the values of neighborhood connectivity of the desired vertices.
     :type NC: list
 
-    :param BC: A list containing the values of betweenness centrality of the desired vertices.
+    BC: A list containing the values of betweenness centrality of the desired vertices.
     :type BC: list
 
-    :param CI: A list containing the values of Collective Influence of the desired vertices.
+    CI: A list containing the values of Collective Influence of the desired vertices.
     :type CI: list
 
-    :param: scaled: Wether the end result should be 1-100 range normalized or not (default is True).
-    :type scaled: bool
+    scaled: the method used for scaling/normalizing the results. Options include 'range' (normalization within a 1-100 range), 'z-scale' (standardization using the z-score), and 'none' (no data scaling). 
+    The default selection is 'range'. Opting for the 'range' method is suitable when exploring a single network, allowing you to observe the complete spectrum and distribution of node influences. 
+    In this case, there is no intention to establish a specific threshold for the outcomes. However, it is possible to identify and present the top influential nodes based on their rankings. 
+    Conversely, the 'z-scale' option proves advantageous if the aim is to compare node influences across multiple networks or if there is a desire to establish a threshold (usually z-score > 1.645) 
+    for generating a list of the most influential nodes without manual intervention.
+    :type scale: str
 
-    :param verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
+    verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
     :type verbose: bool
 
     :return: A numeric list with the IVI values based on the provided centrality measures.
@@ -582,11 +587,15 @@ def ivi_from_indices(DC, CR, LH_index, NC, BC, CI, scaled = True, verbose = Fals
     tmp_ivi = hubness_rank * spreading_rank
 
     # 1-100 normalization of IVI
-    if scaled:
+    if scale == "range":
         if verbose:
             print("1-100 normalization of IVI")
         if len(tmp_ivi) > 1:
             tmp_ivi = rangeNormalize(data = tmp_ivi, minimum=1, maximum=100)
+    elif scale == "z-scale":
+        if verbose:
+            print("Z-score standardization of IVI")
+        tmp_ivi = ((tmp_ivi - np.mean(tmp_ivi)) / np.std(tmp_ivi))
 
     return tmp_ivi
 
@@ -596,7 +605,7 @@ def ivi_from_indices(DC, CR, LH_index, NC, BC, CI, scaled = True, verbose = Fals
 #
 #=============================================================================
 
-def ivi(graph, vertices = None, weights = None, directed = False, mode = "all", loops = True, d = 3, scaled = True, verbose = False):
+def ivi(graph, vertices = None, weights = None, directed = False, mode = "all", loops = True, d = 3, scale = 'range', verbose = False):
 
     """
 
@@ -604,44 +613,48 @@ def ivi(graph, vertices = None, weights = None, directed = False, mode = "all", 
     A shiny app has also been developed for the calculation of IVI as well as IVI-based network
     visualization, which is accessible online at https://influential.erc.monash.edu/.
 
-    :param graph: The graph to be evaluated.
+    graph: The graph to be evaluated.
     :type graph: A graph (network) of the igraph class (igraph.Graph).
 
-    :param vertices: A list of desired vertices, which could be
+    vertices: A list of desired vertices, which could be
     obtained by the igraph.VertexSeq function. You may also provide a list of string names of vertices.
     All the vertices are considered by default (vertices = None).
     :type vertices: igraph Vertex class or string list
 
-    :param weights: Optional positive weight list for calculating weighted betweenness centrality
+    weights: Optional positive weight list for calculating weighted betweenness centrality
     of nodes as a requirement for calculation of IVI. If the graph has a weight edge attribute,
     then this is used by default. Can be a sequence or iterable or even an edge attribute name. 
     Weights are used to calculate weighted shortest paths, so they are interpreted as distances.
     :type weights: list
 
-    :param directed: Whether the graph is analyzed as a directed graph. This argument is ignored for undirected graphs.
+    directed: Whether the graph is analyzed as a directed graph. This argument is ignored for undirected graphs.
     :type directed: bool
 
-    :param mode: The mode of IVI depending on the directedness of the graph.
+    mode: The mode of IVI depending on the directedness of the graph.
     If the graph is undirected, the mode "all" should be specified.
     Otherwise, for the calculation of IVI based on
     incoming connections select "in" and for the outgoing connections select "out".
     Also, if all of the connections are desired, specify the "all" mode. Default mode is set to "all".
     :type mode: string
 
-    :param loops: Whether the loop edges are also counted.
+    loops: Whether the loop edges are also counted.
     :type loops: bool
 
-    :param d: The distance, expressed in number of steps from a given node (default=3). Distance
+    d: The distance, expressed in number of steps from a given node (default=3). Distance
     must be > 0. According to Morone & Makse (https://doi.org/10.1038/nature14604), optimal
     results can be reached at d=3,4, but this depends on the size/radius of the network.
     Note: the distance d is not inclusive. This means that nodes at a distance of 3 from
     our node-of-interest do not include nodes at distances 1 and 2. Only 3.
     :type d: int
 
-    :param: scaled: Wether the end result should be 1-100 range normalized or not (default is True).
-    :type scaled: bool
+    scaled: the method used for scaling/normalizing the results. Options include 'range' (normalization within a 1-100 range), 'z-scale' (standardization using the z-score), and 'none' (no data scaling). 
+    The default selection is 'range'. Opting for the 'range' method is suitable when exploring a single network, allowing you to observe the complete spectrum and distribution of node influences. 
+    In this case, there is no intention to establish a specific threshold for the outcomes. However, it is possible to identify and present the top influential nodes based on their rankings. 
+    Conversely, the 'z-scale' option proves advantageous if the aim is to compare node influences across multiple networks or if there is a desire to establish a threshold (usually z-score > 1.645) 
+    for generating a list of the most influential nodes without manual intervention.
+    :type scale: str
 
-    :param verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
+    verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
     :type verbose: bool
 
     :return: A Pandas DataFrame with three columns including Node_index, Node_name, and IVI.
@@ -738,11 +751,15 @@ def ivi(graph, vertices = None, weights = None, directed = False, mode = "all", 
     tmp_ivi = hubness_rank * spreading_rank
 
     # 1-100 normalization of IVI
-    if scaled:
+    if scale == "range":
         if verbose:
             print("1-100 normalization of IVI")
         if len(tmp_ivi) > 1:
             tmp_ivi = rangeNormalize(data= tmp_ivi, minimum=1, maximum=100)
+    elif scale == "z-scale":
+        if verbose:
+            print("Z-score standardization of IVI")
+        tmp_ivi = ((tmp_ivi - np.mean(tmp_ivi)) / np.std(tmp_ivi))
 
     # Preparing the results
     ivi_table = pd.DataFrame({
@@ -759,7 +776,7 @@ def ivi(graph, vertices = None, weights = None, directed = False, mode = "all", 
 #
 #=============================================================================
 
-def spreading_score(graph, vertices = None, weights = None, directed = False, mode = "all", loops = True, d = 3, scaled = True, verbose = False):
+def spreading_score(graph, vertices = None, weights = None, directed = False, mode = "all", loops = True, d = 3, scale = 'range', verbose = False):
 
     """
 
@@ -767,44 +784,48 @@ def spreading_score(graph, vertices = None, weights = None, directed = False, mo
     Spreading score reflects the spreading potential of each node within a network and is
     one of the major components of the IVI.
 
-    :param graph: the graph to be evaluated.
+    graph: the graph to be evaluated.
     :type graph: a graph (network) of the igraph class (igraph.Graph).
 
-    :param vertices: a list of desired vertices, which could be
+    vertices: a list of desired vertices, which could be
     obtained by the igraph.VertexSeq function. You may also provide a list of string names of vertices.
     All the vertices are considered by default (vertices = None).
     :type vertices: igraph Vertex class or string list
 
-    :param weights: optional positive weight list for calculating weighted betweenness centrality
+    weights: optional positive weight list for calculating weighted betweenness centrality
     of nodes as a requirement for calculation of Spreading score. If the graph has a weight edge attribute,
     then this is used by default. Can be a sequence or iterable or even an edge attribute name. 
     Weights are used to calculate weighted shortest paths, so they are interpreted as distances.
     :type weights: list
 
-    :param directed: whether the graph is analyzed as a directed graph. This argument is ignored for undirected graphs.
+    directed: whether the graph is analyzed as a directed graph. This argument is ignored for undirected graphs.
     :type directed: bool
 
-    :param mode: the mode of Spreading score depending on the directedness of the graph.
+    mode: the mode of Spreading score depending on the directedness of the graph.
     If the graph is undirected, the mode "all" should be specified.
     Otherwise, for the calculation of Spreading score based on
     incoming connections select "in" and for the outgoing connections select "out".
     Also, if all of the connections are desired, specify the "all" mode. Default mode is set to "all".
     :type mode: string
 
-    :param loops: whether the loop edges are also counted.
+    loops: whether the loop edges are also counted.
     :type loops: bool
 
-    :param d: the distance, expressed in number of steps from a given node (default=3). Distance
+    d: the distance, expressed in number of steps from a given node (default=3). Distance
     must be > 0. According to Morone & Makse (https://doi.org/10.1038/nature14604), optimal
     results can be reached at d=3,4, but this depends on the size/radius of the network.
     Note: the distance d is not inclusive. This means that nodes at a distance of 3 from
     our node-of-interest do not include nodes at distances 1 and 2. Only 3.
     :type d: int
 
-    :param: scaled: Wether the end result should be 1-100 range normalized or not (default is True).
-    :type scaled: bool
+    scaled: the method used for scaling/normalizing the results. Options include 'range' (normalization within a 1-100 range), 'z-scale' (standardization using the z-score), and 'none' (no data scaling). 
+    The default selection is 'range'. Opting for the 'range' method is suitable when exploring a single network, allowing you to observe the complete spectrum and distribution of node influences. 
+    In this case, there is no intention to establish a specific threshold for the outcomes. However, it is possible to identify and present the top spreading nodes based on their rankings. 
+    Conversely, the 'z-scale' option proves advantageous if the aim is to compare node influences across multiple networks or if there is a desire to establish a threshold (usually z-score > 1.645) 
+    for generating a list of the most spreading nodes without manual intervention.
+    :type scale: str
 
-    :param verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
+    verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
     :type verbose: bool
 
     :return: a Pandas DataFrame with three columns including Node_index, Node_name, and Spreading_score.
@@ -868,11 +889,15 @@ def spreading_score(graph, vertices = None, weights = None, directed = False, mo
     spreading_rank = ((input_indices.NC+input_indices.CR)*(input_indices.BC+input_indices.CI))
 
     # 1-100 normalization of Spreading Rank
-    if scaled:
+    if scale == "range":
         if verbose:
             print("1-100 normalization of Spreading Rank")
         if len(spreading_rank) > 1:
             spreading_rank = rangeNormalize(data=spreading_rank, minimum=1, maximum=100)
+    elif scale == "z-scale":
+        if verbose:
+            print("Z-score standardization of Spreading Rank")
+        spreading_rank = ((spreading_rank - np.mean(spreading_rank)) / np.std(spreading_rank))
 
     # Preparing the results
     spreading_rank_table = pd.DataFrame({
@@ -889,7 +914,7 @@ def spreading_score(graph, vertices = None, weights = None, directed = False, mo
 #
 #=============================================================================
 
-def hubness_score(graph, vertices = None, directed = False, mode = "all", loops = True, scaled = True, verbose = False):
+def hubness_score(graph, vertices = None, directed = False, mode = "all", loops = True, scale = 'range', verbose = False):
 
     """
 
@@ -897,18 +922,18 @@ def hubness_score(graph, vertices = None, directed = False, mode = "all", loops 
     Hubness score reflects the power of each node in its surrounding environment and is
     one of the major components of the IVI.
 
-    :param graph: the graph to be evaluated.
+    graph: the graph to be evaluated.
     :type graph: a graph (network) of the igraph class (igraph.Graph).
 
-    :param vertices: a list of desired vertices, which could be
+    vertices: a list of desired vertices, which could be
     obtained by the igraph.VertexSeq function. You may also provide a list of string names of vertices.
     All the vertices are considered by default (vertices = None).
     :type vertices: igraph Vertex class or string list
 
-    :param directed: whether the graph is analyzed as a directed graph. This argument is ignored for undirected graphs.
+    directed: whether the graph is analyzed as a directed graph. This argument is ignored for undirected graphs.
     :type directed: bool
 
-    :param mode: the mode of Hubness score depending on the directedness of the graph.
+    mode: the mode of Hubness score depending on the directedness of the graph.
     If the graph is undirected, the mode "all" should be specified.
     Otherwise, for the calculation of Hubness score based on
     incoming connections select "in" and for the outgoing connections select "out".
@@ -918,10 +943,14 @@ def hubness_score(graph, vertices = None, directed = False, mode = "all", loops 
     param loops: Whether the loop edges are also counted.
     :type loops: bool
 
-    :param: scaled: Wether the end result should be 1-100 range normalized or not (default is True).
-    :type scaled: bool
+    scaled: the method used for scaling/normalizing the results. Options include 'range' (normalization within a 1-100 range), 'z-scale' (standardization using the z-score), and 'none' (no data scaling). 
+    The default selection is 'range'. Opting for the 'range' method is suitable when exploring a single network, allowing you to observe the complete spectrum and distribution of node influences. 
+    In this case, there is no intention to establish a specific threshold for the outcomes. However, it is possible to identify and present the top hubness nodes based on their rankings. 
+    Conversely, the 'z-scale' option proves advantageous if the aim is to compare node influences across multiple networks or if there is a desire to establish a threshold (usually z-score > 1.645) 
+    for generating a list of the most hubness nodes without manual intervention.
+    :type scale: str
 
-    :param verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
+    verbose: whether the accomplishment of different stages of the algorithm should be printed (default is False).
     :type verbose: bool
 
     :return: a Pandas DataFrame with three columns including Node_index, Node_name, and Hubness_score.
@@ -974,11 +1003,15 @@ def hubness_score(graph, vertices = None, directed = False, mode = "all", loops 
     hubness_rank = (input_indices.DC+input_indices.LH_index)
 
     # 1-100 normalization of Hubness Rank
-    if scaled:
+    if scale == "range":
         if verbose:
             print("1-100 normalization of Hubness Rank")
         if len(hubness_rank) > 1:
             hubness_rank = rangeNormalize(data=hubness_rank, minimum=1, maximum=100)
+    elif scale == "z-scale":
+        if verbose:
+            print("Z-score standardization of Hubness Rank")
+        hubness_rank = ((hubness_rank - np.mean(hubness_rank)) / np.std(hubness_rank))
 
     # Preparing the results
     hubness_rank_table = pd.DataFrame({
@@ -1006,32 +1039,32 @@ def sirir(graph, vertices = None, beta = 0.5, gamma = 0.1, no_sim = None,  model
     performance of a novel algorithm in identification of network influential nodes by considering
     the SIRIR ranks as the ground truth (gold standard).
 
-    :param graph: the graph to be evaluated.
+    graph: the graph to be evaluated.
     :type graph: a graph (network) of the igraph class (igraph.Graph).
 
-    :param vertices: a list of desired vertices, which could be
+    vertices: a list of desired vertices, which could be
     obtained by the igraph.VertexSeq function. You may also provide a list of string names of vertices.
     All the vertices are considered by default (vertices = None).
     :type vertices: igraph Vertex class or string list
 
-    :param beta: the rate of infection of an individual that is susceptible
+    beta: the rate of infection of an individual that is susceptible
     and has a single infected neighbor. The infection rate of a susceptible individual with n
     infected neighbors is n times beta. Formally this is the rate parameter of an exponential
     distribution.
     :type beta: non-negative float
 
 
-    :param gamma: the rate of recovery of an infected individual.
+    gamma: the rate of recovery of an infected individual.
     Formally, this is the rate parameter of an exponential distribution.
     :type gamma: Non-negative float
 
-    :param no_sim: The number of simulation runs to perform SIR model on the
+    no_sim: The number of simulation runs to perform SIR model on the
     original network as well as perturbed networks generated by leave-one-out technique.
     You may choose a different no_sim based on the available memory on your system. Default (None)
     is set to number of vertices of the original graph multiplied by 100.
     :type no_sim: int
 
-    :param seed: a single value, interpreted as an integer to be used for random number generation.
+    seed: a single value, interpreted as an integer to be used for random number generation.
     :type seed: int
 
     :return: a Pandas DataFrame with four columns including Node_index, Node_name, the difference values of the original and
