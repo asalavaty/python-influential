@@ -317,7 +317,12 @@ def exir_model(Diff_data, Diff_value, Sig_value,
     else:
         select_number = 100
 
-    sig_rf_index = [i for i, x in enumerate(list(rf_diff_exptl_pvalue['p_value'] < alpha)) if x]
+    if len([i for i, x in enumerate(list(rf_diff_exptl_pvalue['p_value'] < alpha)) if x] >= 10):
+        sig_rf_index = [i for i, x in enumerate(list(rf_diff_exptl_pvalue['p_value'] < alpha)) if x]
+    else:
+        sorted_indices = rf_diff_exptl_pvalue['pvalue'].argsort()
+        sig_rf_index = sorted_indices[sorted_indices <= 10]
+
     non_sig_rf_index = [i for i, x in enumerate(list(rf_diff_exptl_pvalue['p_value'] < alpha)) if not x]
     if len(sig_rf_index) >= select_number:
         rf_diff_exptl_pvalue = rf_diff_exptl_pvalue.iloc[sig_rf_index]
